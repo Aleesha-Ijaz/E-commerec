@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModernCommerce | Premium Shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="sticky-header">
+        <nav class="container">
+            <div class="header-left">
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <h1>Modern<span>Commerce</span></h1>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-icons">
+                <div class="cart-icon" id="cartToggle">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="badge">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Banner Section -->
+        <section class="hero-banner">
+            <div class="banner-content container">
+                <span class="badge-promo">Summer Collection 2026</span>
+                <h2>Premium Style for Professionals</h2>
+                <p>Get up to 40% off on our new arrivals and best sellers.</p>
+                <div class="hero-btns">
+                    <a href="#productGrid" class="btn btn-primary">Shop Now</a>
+                    <a href="#deals" class="btn btn-outline">View Deals</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Quick Links -->
+        <section class="categories-section container">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Find what you need in seconds</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterByCategory('Men')">
+                    <div class="cat-icon"><i class="fas fa-mars"></i></div>
+                    <h3>Men</h3>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Women')">
+                    <div class="cat-icon"><i class="fas fa-venus"></i></div>
+                    <h3>Women</h3>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Electronics')">
+                    <div class="cat-icon"><i class="fas fa-laptop"></i></div>
+                    <h3>Electronics</h3>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Clothing')">
+                    <div class="cat-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3>Clothing</h3>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Shoes')">
+                    <div class="cat-icon"><i class="fas fa-shoe-prints"></i></div>
+                    <h3>Shoes</h3>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Accessories')">
+                    <div class="cat-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Accessories</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-section container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <a href="#productGrid" class="view-all">View All</a>
+            </div>
+            <div id="featuredGrid" class="product-grid">
+                <!-- Featured items injected here -->
+            </div>
+        </section>
+
+        <!-- Seasonal Promotion Banner -->
+        <section id="deals" class="promo-banner-section container">
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <h3>Flash Sale! ⚡</h3>
+                    <h2>Save big on Electronics</h2>
+                    <p>Limited time offer. Don't miss out on the best tech of 2026.</p>
+                    <button class="btn btn-white">Claim Discount</button>
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=800&auto=format&fit=crop&q=80"
+                        alt="Promo" onerror="this.src='https://via.placeholder.com/800x400?text=Promotion'">
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Product Section with Filters -->
+        <section class="main-shop container">
+            <div class="section-header" id="all-products">
+                <h2>All Products</h2>
+            </div>
+            <section id="productGrid" class="product-grid">
+                <!-- Products will be injected here by JavaScript -->
+            </section>
+        </section>
+    </main>
+
+    <!-- Filter Sidebar (Left) -->
+    <div id="filterSidebar" class="filter-sidebar">
+        <div class="sidebar-header">
+            <h3>Filters & Sort</h3>
+            <button id="closeFilters" class="close-btn">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="filter-group-vertical">
+                <h4>Categories</h4>
+                <button class="filter-btn active" data-category="all">All Items</button>
+                <button class="filter-btn" data-category="Men">Men's Fashion</button>
+                <button class="filter-btn" data-category="Women">Women's Fashion</button>
+                <button class="filter-btn" data-category="Electronics">Electronics</button>
+                <button class="filter-btn" data-category="Clothing">Clothing</button>
+                <button class="filter-btn" data-category="Shoes">Shoes</button>
+                <button class="filter-btn" data-category="Accessories">Accessories</button>
+            </div>
+            <div class="sort-group-vertical">
+                <h4>Sort By</h4>
+                <select id="sortSelect">
+                    <option value="featured">Featured</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="closeCart" class="close-btn">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <!-- Cart items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="checkout-modal">
+        <div class="modal-content">
+            <button id="closeCheckout" class="close-btn">&times;</button>
+
+            <!-- Screen 1: Select Payment Method -->
+            <div id="paymentSelectionScreen">
+                <div class="modal-header">
+                    <h2>Select Payment Method</h2>
+                    <p>How would you like to pay for your order?</p>
+                </div>
+                <div class="payment-options">
+                    <div class="payment-card" onclick="placeOrder('Cash on Delivery')">
+                        <div class="payment-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="payment-info">
+                            <h3>Cash on Delivery</h3>
+                            <p>Pay when your order arrives</p>
+                        </div>
+                        <div class="payment-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="payment-card" id="onlinePaymentBtn">
+                        <div class="payment-icon"><i class="fas fa-credit-card"></i></div>
+                        <div class="payment-info">
+                            <h3>Online Payment</h3>
+                            <p>Pay securely with card or wallet</p>
+                        </div>
+                        <div class="payment-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 2: Card Details Form -->
+            <div id="cardDetailsScreen" style="display: none;">
+                <div class="modal-header">
+                    <button id="backToPayment" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Card Information</h2>
+                    <p>Enter your payment details</p>
+                </div>
+                <form id="cardForm" class="card-form">
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="password" placeholder="XXX" maxlength="3" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="pay-now-btn">Pay Now & Place Order</button>
+                </form>
+            </div>
+
+            <div class="order-summary-mini">
+                <span>Order Total:</span>
+                <span id="modalTotal">$0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
